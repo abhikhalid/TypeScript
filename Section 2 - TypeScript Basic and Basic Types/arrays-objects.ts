@@ -19,3 +19,23 @@ let possibleResults: [number, number]; // [1, -1]
 
 possibleResults = [1, -1];
 // possibleResults = [5,10,12]; // This will cause a type error
+
+
+//Object Types
+let user: {
+    name: string;
+    age: number;
+    hobbies: string[];
+    role: {
+        description: string;
+        id: number;
+    }
+} = {
+    name: 'Max',
+    age: 32,
+    hobbies: ['Sports', 'Cooking'],
+    role: {
+        description: 'admin',
+        id: 1
+    }
+}
