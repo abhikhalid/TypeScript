@@ -41,3 +41,11 @@ let user: {
 }
 
 let val: {} = 'is a value';
+
+//Flexible Object with the Record Types
+let data: Record<string, number | string>;
+
+data = {
+    entry1: 1,
+    entry2: 'some string'
+};
