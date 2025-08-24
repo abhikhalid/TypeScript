@@ -1,1 +1,4 @@
-console.log('Hello World');
+// let userName;
+let userName : string;
+
+userName = 'Max';
