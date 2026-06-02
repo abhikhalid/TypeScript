@@ -4,7 +4,17 @@
 // expected annual return
 // duration
 
-function calculateInvestment(data) {} //  => result[]
+type InvestmentData = {
+  initialAmount: number;
+  annualContribution: number;
+  expectedReturn: number;
+  duration: number;
+};
+
+function calculateInvestment(data: InvestmentData): number[] {
+  // Implementation for investment calculation
+  return [];
+}
 
 function printResults(results) {} // => print (output) the result data
 
