@@ -35,3 +35,23 @@ if(button){
 
 printOutput(add(5));
 printOutput(add2(5, 10));
+
+
+const hobbies = ['Sports', 'Cooking'];
+
+const activeHobbies = ['Hiking'];
+
+activeHobbies.push(...hobbies);
+
+const person = {
+    name: 'Khalid',
+    age: 30
+};
+
+
+// const copiedPerson = person; // This will not create a new object, but rather a reference to the original person object
+
+const copiedPerson = { ...person };
+
+console.log(copiedPerson);
+
