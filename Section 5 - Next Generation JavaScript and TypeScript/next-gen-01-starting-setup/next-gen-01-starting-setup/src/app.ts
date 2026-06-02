@@ -39,6 +39,15 @@
 
 const hobbies = ['Sports', 'Cooking'];
 
+// Array destructuring
+const [hobby1, hobby2,...remainingHobbies] = hobbies;
+
+console.log(hobby1, hobby2);
+console.log(remainingHobbies);
+
+
+
+
 const activeHobbies = ['Hiking'];
 
 activeHobbies.push(...hobbies);
@@ -48,6 +57,8 @@ const person = {
     age: 30
 };
 
+// Object destructuring
+const { name: personName, age } = person;
 
 // const copiedPerson = person; // This will not create a new object, but rather a reference to the original person object
 
