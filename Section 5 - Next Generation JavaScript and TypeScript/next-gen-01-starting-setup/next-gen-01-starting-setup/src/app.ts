@@ -17,7 +17,7 @@
 //  console.log('You are an adult.');
 // }
 
-const add = (a: number, b: number): number => {
+const add = (a: number, b: number = 1): number => {
     return a + b;
 }
 
@@ -32,3 +32,6 @@ const button = document.querySelector('button')!;
 if(button){
     button.addEventListener('click', event => console.log(event));
 }
+
+printOutput(add(5));
+printOutput(add2(5, 10));
