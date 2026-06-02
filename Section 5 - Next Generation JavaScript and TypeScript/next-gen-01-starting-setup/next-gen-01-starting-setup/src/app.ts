@@ -17,24 +17,24 @@
 //  console.log('You are an adult.');
 // }
 
-const add = (a: number, b: number = 1): number => {
-    return a + b;
-}
+// const add = (a: number, b: number = 1): number => {
+//     return a + b;
+// }
 
 
-const add2 = (a: number, b: number): number => a + b;
+// const add2 = (a: number, b: number): number => a + b;
 
 
-const printOutput: (output: string | number) => void = output => console.log(output);
+// const printOutput: (output: string | number) => void = output => console.log(output);
 
-const button = document.querySelector('button')!;
+// const button = document.querySelector('button')!;
 
-if(button){
-    button.addEventListener('click', event => console.log(event));
-}
+// if(button){
+//     button.addEventListener('click', event => console.log(event));
+// }
 
-printOutput(add(5));
-printOutput(add2(5, 10));
+// printOutput(add(5));
+// printOutput(add2(5, 10));
 
 
 const hobbies = ['Sports', 'Cooking'];
@@ -53,5 +53,13 @@ const person = {
 
 const copiedPerson = { ...person };
 
-console.log(copiedPerson);
 
+const add = (...numbers: number[]) =>{
+    return numbers.reduce((curResult, curValue) => {
+        return curResult + curValue;
+    }, 0);
+}
+
+const addedNumbers = add(5, 10, 2, 3.7);
+
+console.log(addedNumbers);
