@@ -28,7 +28,15 @@ class User{
 
         this._lastName = name;
     }
+
+    static eid= 'USER';
+
+    static greet(){
+        console.log('Hello from User class!');
+    }
 }
+
+console.log(User.eid); // Output: USER
 
 
 const user = new User();
