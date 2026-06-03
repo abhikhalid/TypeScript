@@ -13,9 +13,8 @@ store.IsInstructor = true;
 let nameStore: DataStore<string> = {};
 
 
-function merge<T, U>(a: T, b: U) {
-    return [a,b];
+function merge<T extends object>(a: T, b: T) {
+    return {...a,...b};
 }
 
-// const ids = merge(1,"Khalid");
-const ids = merge<number,string>(1,"Khalid");
+const ids = merge({id: 1}, {name: 'Khalid'});
