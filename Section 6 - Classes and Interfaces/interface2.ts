@@ -4,8 +4,11 @@ interface Authenticatable{
 
         login(): void;
         logout(): void;
-    }
+}
 
+interface AuthenticatableAdmin extends Authenticatable {
+    role: 'admin' | 'superadmin';
+}
 
 class AuthenticatableUser implements Authenticatable {
     email: string;
