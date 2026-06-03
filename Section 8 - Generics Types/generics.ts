@@ -1,11 +1,13 @@
 let names : Array<string> = ['Khalid','Mahmud']
 
 
-type DataStore = {
-    [key : string] : string | number;
+type DataStore<T> = {
+    [key : string] : T;
 }
 
-let store : DataStore = {};
+let store : DataStore<string | boolean> = {};
 
 store.name = 'Khalid';
-store.age = 30;
+store.IsInstructor = true;
+
+let nameStore: DataStore<string> = {};
