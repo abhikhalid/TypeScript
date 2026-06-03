@@ -24,4 +24,10 @@ class AuthenticatableUser implements Authenticatable {
         console.log("User logged out.");
     }
 }
+
+
+function authenticate(user: Authenticatable) {
+    user.login();
+    // Additional authentication logic can be added here
+    user.logout();
 }
