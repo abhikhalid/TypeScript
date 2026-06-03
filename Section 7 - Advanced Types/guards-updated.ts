@@ -12,14 +12,25 @@ const dbSource: DBSource = {
 
 type Source = FileSource | DBSource;
 
+//behind the hood, return type of this function is Source is FileSource, which means that if this function returns true, then source is of type FileSource, otherwise it is of type DBSource
+function isFile(source: Source): source is FileSource {
+  return source.type === 'file';
+}
+
+function isDB(source: Source): source is DBSource {
+  return source.type === 'db';
+}
+
 function loadData(source: Source) {
-  // if ('path' in source) {
-  if (source.type === 'file') {
-    // source.path
-    // source.path; => use that to open the file
+  if(isFile(source)) {
+    // source.path; => use that  to open the file
     return;
   }
-  // source.connectionUrl; => to reach out to database
+
+  if(isDB(source)) {
+    // source.connectionUrl; => use that to connect to the database
+    return;
+  }
 }
 
 class User {
