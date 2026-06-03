@@ -5,8 +5,8 @@
 
 
 class User{
-    private _firstName: string = '';
-    private _lastName: string = '';
+    protected _firstName: string = '';
+    protected _lastName: string = '';
 
     // This is a getter for the fullName property
     get fullName(): string {
@@ -53,6 +53,6 @@ class Employee extends User {
     }
 
     work(){
-
+       console.log(this._firstName + ' is working as a ' + this.jobTitle);
     }
 }
