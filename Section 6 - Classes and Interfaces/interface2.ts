@@ -34,3 +34,12 @@ function authenticate(user: Authenticatable) {
     // Additional authentication logic can be added here
     user.logout();
 }
+
+// in the terminal type the following command to compile the TypeScript code:
+// tsc interface2.ts --target ES2022 --module NodeNext
+// This will generate a JavaScript file named interface2.js that can be run in a Node.js environment.
+// To run the generated JavaScript file, use the following command in the terminal:
+// node interface2.js
+
+// in the compiled JavaScript file, you will see the output from the login and logout methods when the authenticate function is called with an instance of AuthenticatableUser.
+// see the image.png file for the expected output in the terminal.
