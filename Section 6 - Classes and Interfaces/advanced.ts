@@ -46,3 +46,13 @@ console.log(user.fullName); // Output: John Doe
 
 // In this example, we have a `User` class with private properties `_firstName` and `_lastName`. We define a getter `fullName` that returns the full name of the user by concatenating the first and last names. We also have setter methods for `firstName` and `lastName` to allow setting these properties while ensuring they are not empty. When we create an instance of the `User` class and set the first and last names, we can access the full name using the `fullName` getter.
 
+class Employee extends User {
+ 
+    constructor(public jobTitle:string){
+        super(); //you must call super() in the constructor of a derived class before accessing 'this'
+    }
+
+    work(){
+
+    }
+}
