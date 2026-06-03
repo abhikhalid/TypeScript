@@ -1,6 +1,11 @@
-let names = ['Khalid','Mahmud']
-
-let names2: string[] = ['Max','Anna']
+let names : Array<string> = ['Khalid','Mahmud']
 
 
-let names3 : Array<string> = ['Israr','Chowdhury']
+type DataStore = {
+    [key : string] : string | number;
+}
+
+let store : DataStore = {};
+
+store.name = 'Khalid';
+store.age = 30;
