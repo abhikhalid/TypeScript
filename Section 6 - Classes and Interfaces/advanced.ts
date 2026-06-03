@@ -56,3 +56,22 @@ class Employee extends User {
        console.log(this._firstName + ' is working as a ' + this.jobTitle);
     }
 }
+
+//abstract class in TypeScript
+// An abstract class is a class that cannot be instantiated on its own and is meant to be subclassed. It can contain abstract methods, which are methods that are declared but not implemented in the abstract class. Subclasses of the abstract class must provide an implementation for these abstract methods.
+
+abstract class UIElement{
+    constructor(public identifier: string){}
+
+    clone(targetLocation: string){
+        //logic to duplicate the UI element
+    }
+}
+
+//let uiElement = new UIElement();
+
+class SideDrawerElement extends UIElement{
+    constructor(public identifier: string, public position: 'left' | 'right'){
+        super(identifier);
+    }
+}
