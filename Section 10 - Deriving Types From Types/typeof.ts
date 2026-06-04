@@ -2,6 +2,8 @@
 // 'tsc' to compiler
 // node typeof.js
 
+// typeof => operator allows us to derive type from values
+
 let userName = 'Max';
 
 console.log(typeof userName);
@@ -17,9 +19,9 @@ const settings = {
     players: ['John','Jane']
 };
 
-type Settings = typeof settings;
+// type Settings = typeof settings;
 
-function loadData(settings: Settings){
+function loadData(s: typeof settings){
     //...
 }
 
