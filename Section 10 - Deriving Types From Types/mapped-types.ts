@@ -15,12 +15,11 @@ let mathOperations: Operations = {
 }
 
 //let's say I want to store the result of the 'mathOperations'
-type Results = {
-    add: number,
-    subtract: number
+type Results<T> = {
+    [Key in keyof T]: number;
 }
 
-let mathResults: Results = {
+let mathResults: Results<Operations> = {
     add: mathOperations.add(1,2),
     subtract: mathOperations.subtract(5,2)
 };
