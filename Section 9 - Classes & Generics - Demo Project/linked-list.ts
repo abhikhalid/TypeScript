@@ -6,18 +6,17 @@ class ListNode<T>{
 
 class LinkedList<T>{
     private root?: ListNode<T>;
+    private tail?: ListNode<T>;
     private length = 0;
 
     add(value: T){
-        const node = new ListNode(value);
-        if(!this.root){
-            this.root = node;
+        const newNode = new ListNode(value);
+        if(!this.root || !this.tail){
+            this.root = newNode;
+            this.tail = this.root;
         } else {
-            let current = this.root;
-            while(current.next){
-                current = current.next;
-            }
-            current.next = node;
+            this.tail.next = newNode;
+            this.tail = newNode;
         }
         this.length++;
     }
