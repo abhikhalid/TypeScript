@@ -22,6 +22,10 @@ function autobind(target: (...args: any[]) => any, ctx: ClassMethodDecoratorCont
 @logger
 class Person{
     name = 'Khalid';
+
+    constructor(){
+        this.greet = this.greet.bind(this);
+    }
    
     @autobind
     greet(){
@@ -31,8 +35,8 @@ class Person{
 
 //let's just point to greet function, not execute it
 const max = new Person();
-const greet = max.greet();
-greet(); //error.
+const greet = max.greet;
+greet(); 
 
 
 

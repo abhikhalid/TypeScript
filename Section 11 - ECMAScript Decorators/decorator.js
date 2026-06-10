@@ -68,14 +68,19 @@ let Person = (() => {
             __runInitializers(_classThis, _classExtraInitializers);
         }
         name = (__runInitializers(this, _instanceExtraInitializers), 'Khalid');
+        constructor() {
+            this.greet = this.greet.bind(this);
+        }
         greet() {
             console.log('Hi, I am ' + this.name);
         }
     };
     return Person = _classThis;
 })();
-const person = new Person();
-const person2 = new Person();
+//let's just point to greet function, not execute it
+const max = new Person();
+const greet = max.greet;
+greet();
 export {};
 //in the terminal
 // tsc --init
