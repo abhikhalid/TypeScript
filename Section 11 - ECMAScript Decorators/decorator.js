@@ -33,10 +33,12 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
     if (target) Object.defineProperty(target, contextIn.name, descriptor);
     done = true;
 };
+//Class Decorator
 function logger(target, ctx) {
-    console.log('logger decorator');
+    console.log('\n logger decorator - class decorator');
     console.log(target);
     console.log(ctx);
+    //Replacing the original class constructor by 'return' keyword
     return class extends target {
         constructor(...args) {
             super(...args);
@@ -45,10 +47,29 @@ function logger(target, ctx) {
         }
     };
 }
+// Method Decorator
 function autobind(target, ctx) {
     ctx.addInitializer(function () {
         this[ctx.name] = this[ctx.name].bind(this);
     });
+    // just as with the class decorator, the method decorator can also return an updated version of the method you are binding to
+    // or you could replace the original method if you are willing to
+    return function () {
+        console.log('\n autobind - method decorator');
+        console.log('Executing original function');
+        target.apply(this); // you are essentially wrapping the original function
+        // apply executes immediately.
+    };
+}
+//Field Decorator
+function fieldLogger(target, ctx) {
+    console.log('\n fieldLogger - Field Decorator');
+    console.log(target);
+    console.log(ctx);
+    return (initialValue) => {
+        console.log(initialValue);
+        return '';
+    };
 }
 let Person = (() => {
     let _classDecorators = [logger];
@@ -56,21 +77,32 @@ let Person = (() => {
     let _classExtraInitializers = [];
     let _classThis;
     let _instanceExtraInitializers = [];
+    let _name_decorators;
+    let _name_initializers = [];
+    let _name_extraInitializers = [];
     let _greet_decorators;
     var Person = class {
         static { _classThis = this; }
         static {
             const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+            _name_decorators = [fieldLogger];
             _greet_decorators = [autobind];
             __esDecorate(this, null, _greet_decorators, { kind: "method", name: "greet", static: false, private: false, access: { has: obj => "greet" in obj, get: obj => obj.greet }, metadata: _metadata }, null, _instanceExtraInitializers);
+            __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: obj => "name" in obj, get: obj => obj.name, set: (obj, value) => { obj.name = value; } }, metadata: _metadata }, _name_initializers, _name_extraInitializers);
             __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name, metadata: _metadata }, null, _classExtraInitializers);
             Person = _classThis = _classDescriptor.value;
             if (_metadata) Object.defineProperty(_classThis, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
             __runInitializers(_classThis, _classExtraInitializers);
         }
-        name = (__runInitializers(this, _instanceExtraInitializers), 'Khalid');
+        name = (__runInitializers(this, _instanceExtraInitializers), __runInitializers(this, _name_initializers, 'Khalid'));
+        Person() {
+            console.log('I am parent constructor');
+        }
         greet() {
             console.log('Hi, I am ' + this.name);
+        }
+        constructor() {
+            __runInitializers(this, _name_extraInitializers);
         }
     };
     return Person = _classThis;
