@@ -15,18 +15,15 @@ function logger<T extends new (...args: any[]) => any>(target: T, ctx: ClassDeco
 }
 
 function autobind(target: (...args: any[]) => any, ctx: ClassMethodDecoratorContext) {
-    console.log(target);
-    console.log(ctx);
+   ctx.addInitializer(function(this:any){
+        this[ctx.name] = this[ctx.name].bind(this);
+   });
 }
 
 @logger
 class Person{
     name = 'Khalid';
 
-    constructor(){
-        this.greet = this.greet.bind(this);
-    }
-   
     @autobind
     greet(){
         console.log('Hi, I am '+ this.name);
