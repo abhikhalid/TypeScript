@@ -13,10 +13,16 @@ function logger<T extends new (...args: any[]) => any>(target: T) {
     }
 }
 
+function autobind(target: (...args: any[]) => any, ctx: ClassMethodDecoratorContext) {
+    console.log(target);
+    console.log(ctx);
+}
+
 @logger
 class Person{
     name = 'Khalid';
-
+   
+    @autobind
     greet(){
         console.log('Hi, I am '+ this.name);
     }
