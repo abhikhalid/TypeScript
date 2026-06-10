@@ -18,6 +18,15 @@ function autobind(target: (...args: any[]) => any, ctx: ClassMethodDecoratorCont
    ctx.addInitializer(function(this:any){
         this[ctx.name] = this[ctx.name].bind(this);
    });
+
+   // just as with the class decorator, the method decorator can also return an updated version of the method you are binding to
+   // or you could replace the original method if you are willing to
+
+   return function(this:any){
+     console.log('Executing original function')
+     target.apply(this); // you are essentially wrapping the original function
+     // apply executes immediately.
+   }
 }
 
 @logger
