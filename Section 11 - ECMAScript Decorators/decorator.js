@@ -33,9 +33,10 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
     if (target) Object.defineProperty(target, contextIn.name, descriptor);
     done = true;
 };
-function logger(target) {
+function logger(target, ctx) {
     console.log('logger decorator');
     console.log(target);
+    console.log(ctx);
     return class extends target {
         constructor(...args) {
             super(...args);

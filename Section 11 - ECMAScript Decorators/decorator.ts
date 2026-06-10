@@ -1,8 +1,9 @@
 // Decorator is an object oriented related feature, I will start by adding a class
 
-function logger<T extends new (...args: any[]) => any>(target: T) {
+function logger<T extends new (...args: any[]) => any>(target: T, ctx: ClassDecoratorContext) {
     console.log('logger decorator');
     console.log(target);
+    console.log(ctx);
 
     return class extends target{
         constructor(...args:any[]){
@@ -28,8 +29,12 @@ class Person{
     }
 }
 
-const person = new Person();
-const person2 = new Person();
+//let's just point to greet function, not execute it
+const max = new Person();
+const greet = max.greet();
+greet(); //error.
+
+
 
 //in the terminal
 // tsc --init
