@@ -1,12 +1,15 @@
 // Decorator is an object oriented related feature, I will start by adding a class
 
-function logger<T extends new (...args: any[]) => any>(target: T, ctx: ClassDecoratorContext){
+function logger<T extends new (...args: any[]) => any>(target: T) {
     console.log('logger decorator');
     console.log(target);
-    console.log(ctx);
 
     return class extends target{
-        age = 30;
+        constructor(...args:any[]){
+            super(...args);
+            console.log('class constructor');
+            console.log(this);
+        }
     }
 }
 
@@ -20,8 +23,9 @@ class Person{
 }
 
 const person = new Person();
-console.log(person);
+const person2 = new Person();
 
 //in the terminal
+// tsc --init
 // tsc
-// node decorator.ts
+// node decorator.js
