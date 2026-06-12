@@ -11,8 +11,8 @@ interface CourseGoalsProps {
   goals: Goal[];
 };
 
-// export default function CourseGoals({ goals }: CourseGoalsProps) { // modern approach
-const CourseGoals: React.FC<CourseGoalsProps> = ({ goals }) => { //old approach
+export default function CourseGoals({ goals }: CourseGoalsProps) { // modern approach
+//  const CourseGoals: React.FC<CourseGoalsProps> = ({ goals }) => { //old approach
   return (
     <ul>
         {goals.map((goal) => (
