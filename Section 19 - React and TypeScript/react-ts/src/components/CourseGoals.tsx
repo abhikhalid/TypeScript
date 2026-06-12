@@ -9,9 +9,10 @@ type Goal = {
 interface CourseGoalsProps {
   // Define any props if needed
   goals: Goal[];
+  onDelete?: (id: number) => void; // Optional prop for delete functionality
 };
 
-export default function CourseGoals({ goals }: CourseGoalsProps) { // modern approach
+export default function CourseGoals({ goals, onDelete }: CourseGoalsProps) { // modern approach
 //  const CourseGoals: React.FC<CourseGoalsProps> = ({ goals }) => { //old approach
   return (
     <ul>
@@ -23,7 +24,7 @@ export default function CourseGoals({ goals }: CourseGoalsProps) { // modern app
                     <p>{goal.description}</p>
                 </div>
 
-                <button>Delete</button>
+                <button onClick={() => onDelete && onDelete(goal.id)}>Delete</button>
             </article>
         </li>
         ))}

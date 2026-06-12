@@ -17,7 +17,7 @@ function App() {
         <h1>Your Course Goals</h1>
       </Header>
 
-      <CourseGoals goals={goals} />
+      <CourseGoals goals={goals} onDelete={(id) => setGoals(goals.filter(goal => goal.id !== id))} />
 
     </main>
   )
